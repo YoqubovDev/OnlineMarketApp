@@ -186,16 +186,16 @@
                                             <div
                                                 class="inner-img relative block overflow-hidden pointer-events-none rounded-t-[20px]">
                                                 <img class="main-img transition-all duration-[0.3s] ease-in-out w-full"
-                                                     src="assets/img/product/1.jpg" alt="product-1">
+                                                     src="{{ isset($product->images[0]) ? Storage::url($product->images[0]->path) : asset('images/default-image.jpg') }}" alt="product-1">
                                                 <img
                                                     class="hover-img transition-all duration-[0.3s] ease-in-out absolute z-[2] top-[0] left-[0] opacity-[0] w-full"
-                                                    src="assets/img/product/back-1.jpg" alt="product-1">
+                                                    src="{{ isset($product->images[0]) ? Storage::url($product->images[0]->path) : asset('images/default-image.jpg') }}" alt="product-1">
                                             </div>
                                         </a>
                                         <ul class="bb-pro-actions transition-all duration-[0.3s] ease-in-out my-[0] mx-[auto] absolute z-[9] left-[0] right-[0] bottom-[0] flex flex-row items-center justify-center opacity-[0]">
                                             <li class="bb-btn-group transition-all duration-[0.3s] ease-in-out w-[35px] h-[35px] mx-[2px] flex items-center justify-center bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[10px]">
                                                 <a href="javascript:void(0)" title="Wishlist"
-                                                   class="w-[35px] h-[35px] flex items-center justify-center">
+                                                   class="like-btn w-[35px] h-[35px] flex items-center justify-center"  data-product-id="{{ $product->id }}">
                                                     <i class="ri-heart-line text-[18px] leading-[10px]"></i>
 
                                                 </a>
@@ -784,6 +784,43 @@
                     console.error("Cart xatosi:", xhr);
                 }
             });
+        });
+    });
+</script>
+
+<script>
+    document.querySelectorAll('.like-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const productId = this.dataset.productId;
+            console.log("Product ID:", productId);
+
+            fetch('/wishlist/toggle', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                },
+                body: JSON.stringify({ product_id: productId }),
+                credentials: 'same-origin' // 👈 Bu MUHIM: cookie yuboriladi
+            })
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error("Serverdan noto‘g‘ri javob: " + res.status);
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    if (data.status === 'added') {
+                        this.querySelector('i').classList.remove('ri-heart-line');
+                        this.querySelector('i').classList.add('ri-heart-fill', 'text-[#6c7fd8]');
+                    } else {
+                        this.querySelector('i').classList.remove('ri-heart-fill', 'text-[#6c7fd8]');
+                        this.querySelector('i').classList.add('ri-heart-line');
+                    }
+                })
+                .catch(error => {
+                    console.error('Xato yuz berdi:', error);
+                });
         });
     });
 </script>
