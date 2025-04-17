@@ -1,5 +1,4 @@
 name: Laravel
-
 on:
   push:
     branches: [ "main" ]
