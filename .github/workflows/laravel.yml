@@ -23,4 +23,5 @@ jobs:
             sleep 2
             sudo docker exec market_app php artisan migrate
             sudo docker exec market_app php artisan optimize
+            chmod -R 777 /var/www
             echo "Deploy Completed!"
