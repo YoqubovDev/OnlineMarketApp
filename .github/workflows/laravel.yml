@@ -22,6 +22,6 @@ jobs:
             sudo git pull
             sudo docker compose up -d --build
             sleep 2
-            sudo docker exec jdu_app php artisan migrate
-            sudo docker exec jdu_app php artisan optimize
+            sudo docker exec market_app php artisan migrate
+            sudo docker exec market_app php artisan optimize
             echo "Deploy Completed!"
