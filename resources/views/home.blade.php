@@ -222,7 +222,7 @@
                                                 </span>
                                             </div>
                                             <h4 class="bb-pro-title mb-[8px] text-[16px] leading-[18px]">
-                                                <a href="/filter?products[]={{$products->category->name}}" class="transition-all duration-[0.3s] ease-in-out font-quicksand w-full block whitespace-nowrap overflow-hidden text-ellipsis text-[15px] leading-[18px] text-[#3d4750] font-semibold tracking-[0.03rem]">
+                                                <a href="#" class="transition-all duration-[0.3s] ease-in-out font-quicksand w-full block whitespace-nowrap overflow-hidden text-ellipsis text-[15px] leading-[18px] text-[#3d4750] font-semibold tracking-[0.03rem]">
                                                     {{ $product->name }}
                                                 </a>
                                             </h4>
