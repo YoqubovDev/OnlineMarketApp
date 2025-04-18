@@ -46,16 +46,22 @@ services:
             - "6388:6380"
         networks:
             - market_network
-    market_node:
+    node:
+        image: node:22
         container_name: market_node
-        image: node:alpine
+        working_dir: /var/www
         volumes:
             - ./:/var/www
-        command: sh -c "npm install && npm run build"
-        depends_on:
-            -   market_app
+        tty: true
         ports:
-            - "8010:8000"
+            - "5173:5173"  # For Vite development server
+        environment:
+            - NODE_ENV=development
+        command: >
+            sh -c "npm install && npm run dev"
+        networks:
+            - market_app_network
+
 networks:
     market_network:
         driver: bridge

@@ -21,7 +21,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           script: |
-            cd /var/www/OnlineMarketGroupsLeader
+            cd /var/www/OnlineMarketApp
             sudo docker compose down
             sudo git reset --hard
             sudo git pull
