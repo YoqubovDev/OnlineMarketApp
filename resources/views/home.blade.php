@@ -177,7 +177,7 @@
                                             <span class="flags transition-all duration-[0.3s] ease-in-out absolute z-[5] top-[10px] left-[6px]">
                                                 <span class="text-[14px] text-[#777] font-medium uppercase">New</span>
                                             </span>
-                                            <a href="{{ route('show', $product->id) }}" aria-label="View {{ $product->name }}">
+                                            <a href="javascript:void(0)" ></a>
                                                 <div class="inner-img relative block overflow-hidden pointer-events-none rounded-t-[20px]">
                                                     <img class="main-img transition-all duration-[0.3s] ease-in-out w-full"
                                                          src="{{ !empty($product->images[0]) ? \Illuminate\Support\Facades\Storage::url($product->images[0]->path) : asset('default-image.jpg') }}"
