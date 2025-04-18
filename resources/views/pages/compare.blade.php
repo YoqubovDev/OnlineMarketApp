@@ -6,7 +6,7 @@
 <!-- Loader -->
 <div
     class="bb-loader min-w-full w-full h-screen fixed top-[0] left-[0] flex items-center justify-center bg-[#fff] z-[45]">
-    <img src="assets/img/logo/loader.png" alt="loader" class="absolute">
+    <img src="/assets/img/logo/loader.png" alt="loader" class="absolute">
     <span class="loader w-[60px] h-[60px] relative"></span>
 </div>
 
@@ -112,7 +112,7 @@
                                             </a>
                                         </span>
                                     <div class="compare-pro-img h-[250px] m-[auto] flex items-center justify-center">
-                                        <img src="assets/img/new-product/1.jpg" alt="products-1" class="h-full max-[991px]:w-full">
+                                        <img src="/assets/img/new-product/1.jpg" alt="products-1" class="h-full max-[991px]:w-full">
                                     </div>
                                 </li>
                                 <li class="border-b-[1px] border-solid border-[#eee]">
@@ -183,7 +183,7 @@
                                             </a>
                                         </span>
                                     <div class="compare-pro-img h-[250px] m-[auto] flex items-center justify-center">
-                                        <img src="assets/img/new-product/2.jpg" alt="products-2" class="h-full max-[991px]:w-full">
+                                        <img src="/assets/img/new-product/2.jpg" alt="products-2" class="h-full max-[991px]:w-full">
                                     </div>
                                 </li>
                                 <li class="border-b-[1px] border-solid border-[#eee]">
@@ -254,7 +254,7 @@
                                             </a>
                                         </span>
                                     <div class="compare-pro-img h-[250px] m-[auto] flex items-center justify-center">
-                                        <img src="assets/img/new-product/3.jpg" alt="products-3" class="h-full max-[991px]:w-full">
+                                        <img src="/assets/img/new-product/3.jpg" alt="products-3" class="h-full max-[991px]:w-full">
                                     </div>
                                 </li>
                                 <li class="border-b-[1px] border-solid border-[#eee]">
@@ -325,7 +325,7 @@
                                             </a>
                                         </span>
                                     <div class="compare-pro-img h-[250px] m-[auto] flex items-center justify-center">
-                                        <img src="assets/img/new-product/4.jpg" alt="products-4" class="h-full max-[991px]:w-full">
+                                        <img src="/assets/img/new-product/4.jpg" alt="products-4" class="h-full max-[991px]:w-full">
                                     </div>
                                 </li>
                                 <li class="border-b-[1px] border-solid border-[#eee]">

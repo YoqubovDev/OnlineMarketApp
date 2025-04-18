@@ -3,7 +3,7 @@
     <div class="bb-popnews-close transition-all duration-[0.3s] ease-in-out w-[16px] h-[20px] absolute top-[-5px] right-[27px] bg-[#e04e4eb3] rounded-[10px] cursor-pointer hover:bg-[#e04e4e]" title="Close"></div>
     <div class="flex flex-wrap mx-[-12px]">
         <div class="min-[768px]:w-[50%] w-full px-[12px]">
-            <img src="assets/img/newsletter/newsletter.jpg" alt="newsletter" class="w-full rounded-[15px] max-[767px]:hidden">
+            <img src="/assets/img/newsletter/newsletter.jpg" alt="newsletter" class="w-full rounded-[15px] max-[767px]:hidden">
         </div>
         <div class="min-[768px]:w-[50%] w-full px-[12px]">
             <div class="bb-popnews-box-content h-full flex flex-col items-center justify-center">

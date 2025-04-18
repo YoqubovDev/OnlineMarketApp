@@ -16,8 +16,8 @@
                                 </span>
                             <a href="javascript:void(0)">
                                 <div class="inner-img relative block overflow-hidden rounded-tl-[20px] rounded-tr-[20px]">
-                                    <img class="main-img transition-all duration-[0.3s] ease delay-[0s] max-w-full" src="assets/img/product/2.jpg" alt="product-2">
-                                    <img class="hover-img transition-all duration-[0.3s] ease-in-out absolute z-[2] top-[0] left-[0] opacity-[0] w-full" src="assets/img/product/back-2.jpg" alt="product-2">
+                                    <img class="main-img transition-all duration-[0.3s] ease delay-[0s] max-w-full" src="/assets/img/product/2.jpg" alt="product-2">
+                                    <img class="hover-img transition-all duration-[0.3s] ease-in-out absolute z-[2] top-[0] left-[0] opacity-[0] w-full" src="/assets/img/product/back-2.jpg" alt="product-2">
                                 </div>
                             </a>
                             <ul class="bb-pro-actions transition-all duration-[0.3s] ease-in-out my-[0] mx-[auto] absolute z-[9] left-[0] right-[0] bottom-[0] flex flex-row items-center justify-center opacity-[0]">
@@ -69,7 +69,7 @@
                 </div>
                 <div class="bb-cart-banner mb-[24px]">
                     <div class="banner rounded-[20px] relative overflow-hidden">
-                        <img src="assets/img/category/cart-banner.jpg" alt="cart-banner" class="w-full transition-all duration-[0.3s] ease-in-out">
+                        <img src="/assets/img/category/cart-banner.jpg" alt="cart-banner" class="w-full transition-all duration-[0.3s] ease-in-out">
                         <div class="detail w-full p-[15px] absolute left-[0] bottom-[0] bg-[#000000b3] flex flex-col">
                             <h4 class="font-Poppins text-[15px] mb-[5px] leading-[22px] font-light text-[#fff] tracking-[0.03rem]">Organic & Fresh</h4>
                             <h3 class="font-quicksand font-semibold tracking-[0.03rem] text-[#fff] text-[22px] leading-[30px]">Vegetables</h3>
@@ -92,7 +92,7 @@
                         <li class="cart-sidebar-list mb-[24px] p-[20px] flex bg-[#f8f8fb] rounded-[20px] border-[1px] border-solid border-[#eee] relative max-[575px]:p-[10px]">
                             <a href="javascript:void(0)" class="cart-remove-item transition-all duration-[0.3s] ease-in-out bg-[#3d4750] w-[20px] h-[20px] text-[#fff] absolute top-[-3px] right-[-3px] rounded-[50%] flex items-center justify-center opacity-[0.5] text-[15px]"><i class="ri-close-line"></i></a>
                             <a href="javascript:void(0)" class="bb-cart-pro-img flex grow-[1] shrink-[0] basis-[25%] items-center max-[575px]:flex-[initial]">
-                                <img src="assets/img/new-product/1.jpg" alt="product-img-1" class="w-[85px] rounded-[10px] border-[1px] border-solid border-[#eee] max-[575px]:w-[50px]">
+                                <img src="/assets/img/new-product/1.jpg" alt="product-img-1" class="w-[85px] rounded-[10px] border-[1px] border-solid border-[#eee] max-[575px]:w-[50px]">
                             </a>
                             <div class="bb-cart-contact pl-[15px] relative grow-[1] shrink-[0] basis-[70%] overflow-hidden">
                                 <a href="product-left-sidebar.html" class="bb-cart-sub-title w-full mb-[8px] font-Poppins tracking-[0.03rem] text-[#3d4750] whitespace-nowrap overflow-hidden text-ellipsis block text-[14px] leading-[18px] font-medium">Ground Nuts Oil Pack</a>
@@ -108,7 +108,7 @@
                         <li class="cart-sidebar-list mb-[24px] p-[20px] flex bg-[#f8f8fb] rounded-[20px] border-[1px] border-solid border-[#eee] relative max-[575px]:p-[10px]">
                             <a href="javascript:void(0)" class="cart-remove-item transition-all duration-[0.3s] ease-in-out bg-[#3d4750] w-[20px] h-[20px] text-[#fff] absolute top-[-3px] right-[-3px] rounded-[50%] flex items-center justify-center opacity-[0.5] text-[15px]"><i class="ri-close-line"></i></a>
                             <a href="javascript:void(0)" class="bb-cart-pro-img flex grow-[1] shrink-[0] basis-[25%] items-center max-[575px]:flex-[initial]">
-                                <img src="assets/img/new-product/2.jpg" alt="product-img-2" class="w-[85px] rounded-[10px] border-[1px] border-solid border-[#eee] max-[575px]:w-[50px]">
+                                <img src="/assets/img/new-product/2.jpg" alt="product-img-2" class="w-[85px] rounded-[10px] border-[1px] border-solid border-[#eee] max-[575px]:w-[50px]">
                             </a>
                             <div class="bb-cart-contact pl-[15px] relative grow-[1] shrink-[0] basis-[70%] overflow-hidden">
                                 <a href="product-left-sidebar.html" class="bb-cart-sub-title w-full mb-[8px] font-Poppins tracking-[0.03rem] text-[#3d4750] whitespace-nowrap overflow-hidden text-ellipsis block text-[14px] leading-[18px] font-medium">Organic Litchi Juice Pack</a>
@@ -124,7 +124,7 @@
                         <li class="cart-sidebar-list mb-[24px] p-[20px] flex bg-[#f8f8fb] rounded-[20px] border-[1px] border-solid border-[#eee] relative max-[575px]:p-[10px]">
                             <a href="javascript:void(0)" class="cart-remove-item transition-all duration-[0.3s] ease-in-out bg-[#3d4750] w-[20px] h-[20px] text-[#fff] absolute top-[-3px] right-[-3px] rounded-[50%] flex items-center justify-center opacity-[0.5] text-[15px]"><i class="ri-close-line"></i></a>
                             <a href="javascript:void(0)" class="bb-cart-pro-img flex grow-[1] shrink-[0] basis-[25%] items-center max-[575px]:flex-[initial]">
-                                <img src="assets/img/new-product/3.jpg" alt="product-img-3" class="w-[85px] rounded-[10px] border-[1px] border-solid border-[#eee] max-[575px]:w-[50px]">
+                                <img src="/assets/img/new-product/3.jpg" alt="product-img-3" class="w-[85px] rounded-[10px] border-[1px] border-solid border-[#eee] max-[575px]:w-[50px]">
                             </a>
                             <div class="bb-cart-contact pl-[15px] relative grow-[1] shrink-[0] basis-[70%] overflow-hidden">
                                 <a href="product-left-sidebar.html" class="bb-cart-sub-title w-full mb-[8px] font-Poppins tracking-[0.03rem] text-[#3d4750] whitespace-nowrap overflow-hidden text-ellipsis block text-[14px] leading-[18px] font-medium">Crunchy Banana Chips</a>
@@ -140,7 +140,7 @@
                         <li class="cart-sidebar-list mb-[24px] p-[20px] flex bg-[#f8f8fb] rounded-[20px] border-[1px] border-solid border-[#eee] relative max-[575px]:p-[10px]">
                             <a href="javascript:void(0)" class="cart-remove-item transition-all duration-[0.3s] ease-in-out bg-[#3d4750] w-[20px] h-[20px] text-[#fff] absolute top-[-3px] right-[-3px] rounded-[50%] flex items-center justify-center opacity-[0.5] text-[15px]"><i class="ri-close-line"></i></a>
                             <a href="javascript:void(0)" class="bb-cart-pro-img flex grow-[1] shrink-[0] basis-[25%] items-center max-[575px]:flex-[initial]">
-                                <img src="assets/img/new-product/6.jpg" alt="product-img-3" class="w-[85px] rounded-[10px] border-[1px] border-solid border-[#eee] max-[575px]:w-[50px]">
+                                <img src="/assets/img/new-product/6.jpg" alt="product-img-3" class="w-[85px] rounded-[10px] border-[1px] border-solid border-[#eee] max-[575px]:w-[50px]">
                             </a>
                             <div class="bb-cart-contact pl-[15px] relative grow-[1] shrink-[0] basis-[70%] overflow-hidden">
                                 <a href="product-left-sidebar.html" class="bb-cart-sub-title w-full mb-[8px] font-Poppins tracking-[0.03rem] text-[#3d4750] whitespace-nowrap overflow-hidden text-ellipsis block text-[14px] leading-[18px] font-medium">Small Cardamom Spice Pack</a>

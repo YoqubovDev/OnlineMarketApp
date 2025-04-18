@@ -9,7 +9,7 @@
                         <div class="single-pro-img single-pro-img-no-sidebar h-full border-[1px] border-solid border-[#eee] overflow-hidden rounded-[20px]">
                             <div class="single-product-scroll h-full">
                                 <div class="single-slide zoom-image-hover h-full bg-[#fff] flex items-center">
-                                    <img class="img-responsive max-w-full block" src="assets/img/product/1.jpg" alt="product-img-1">
+                                    <img class="img-responsive max-w-full block" src="/assets/img/product/1.jpg" alt="product-img-1">
                                 </div>
                             </div>
                         </div>

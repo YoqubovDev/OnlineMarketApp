@@ -20,7 +20,7 @@
                     </div>
                     <div class="min-[768px]:w-[50%] min-[576px]:w-full w-full px-[12px]">
                         <ul class="bb-breadcrumb-list mx-[-5px] flex justify-end max-[767px]:justify-center">
-                            <li class="bb-breadcrumb-item text-[14px] font-normal px-[5px]"><a href="{{route('home')}}" class="font-Poppins text-[14px] leading-[28px] tracking-[0.03rem] font-semibold text-[#686e7d]">Home</a></li>
+                            <li class="bb-breadcrumb-item text-[14px] font-normal px-[5px]"><a href="{{route('index')}}" class="font-Poppins text-[14px] leading-[28px] tracking-[0.03rem] font-semibold text-[#686e7d]">Home</a></li>
                             <li class="text-[14px] font-normal px-[5px]"><i class="ri-arrow-right-double-fill text-[14px] font-semibold leading-[28px]"></i></li>
                             <li class="bb-breadcrumb-item font-Poppins text-[#686e7d] text-[14px] leading-[28px] font-normal tracking-[0.03rem] px-[5px] active">Shop Page</li>
                         </ul>
@@ -230,12 +230,12 @@
                                         </span>
                                         <a href="javascript:void(0)">
                                             <div class="inner-img relative block overflow-hidden pointer-events-none rounded-t-[20px]">
-                                            <img class="main-img transition-all duration-[0.3s] ease-in-out w-full" 
-     src="{{ \Illuminate\Support\Facades\Storage::url($product->images->first()?->path ?? 'default-image.jpg') }}" 
+                                            <img class="main-img transition-all duration-[0.3s] ease-in-out w-full"
+     src="{{ \Illuminate\Support\Facades\Storage::url($product->images->first()?->path ?? 'default-image.jpg') }}"
      alt="product-1">
 
-<img class="hover-img transition-all duration-[0.3s] ease-in-out absolute z-[2] top-[0] left-[0] opacity-[0] w-full" 
-     src="{{ \Illuminate\Support\Facades\Storage::url($product->images->first()?->path ?? 'default-image.jpg') }}" 
+<img class="hover-img transition-all duration-[0.3s] ease-in-out absolute z-[2] top-[0] left-[0] opacity-[0] w-full"
+     src="{{ \Illuminate\Support\Facades\Storage::url($product->images->first()?->path ?? 'default-image.jpg') }}"
      alt="product-1">
                                             </div>
                                         </a>
@@ -404,7 +404,7 @@
         $("#amount").text("$" + $("#slider-range").slider("values", 0) +
             " - $" + $("#slider-range").slider("values", 1));
     });
-    
+
     document.addEventListener("DOMContentLoaded", function () {
         const sortButton = document.getElementById("sortButton");
         const sortDropdown = document.getElementById("sortDropdown");

@@ -27,11 +27,11 @@
             <h3 class="font-quicksand tracking-[0.03rem] leading-[1.2] my-[15px] text-[14px] font-bold text-[#3d4750]">Dark Modes</h3>
             <div class="bb-tools-dark flex flex-wrap flex-row justify-between">
                 <div class="mode-primary bb-dark-item mode light relative w-[125px] mb-[10px] text-center active-dark" data-bb-mode-tool="light">
-                    <img src="assets/img/tools/light.png" alt="light" class="w-full p-[5px] rounded-[10px] border-[1px] border-solid border-[#eee] hover:border-[#6c7fd8]">
+                    <img src="/assets/img/tools/light.png" alt="light" class="w-full p-[5px] rounded-[10px] border-[1px] border-solid border-[#eee] hover:border-[#6c7fd8]">
                     <p class="m-[0] font-Poppins text-[14px] font-semibold capitalize leading-[28px] tracking-[0.03rem] text-[#686e7d]">Light</p>
                 </div>
                 <div class="bb-dark-item mode dark relative w-[125px] mb-[10px] text-center" data-bb-mode-tool="dark">
-                    <img src="assets/img/tools/dark.png" alt="dark" class="w-full p-[5px] rounded-[10px] border-[1px] border-solid border-[#eee] hover:border-[#6c7fd8]">
+                    <img src="/assets/img/tools/dark.png" alt="dark" class="w-full p-[5px] rounded-[10px] border-[1px] border-solid border-[#eee] hover:border-[#6c7fd8]">
                     <p class="m-[0] font-Poppins text-[14px] font-semibold capitalize leading-[28px] tracking-[0.03rem] text-[#686e7d]">Dark</p>
                 </div>
             </div>
@@ -40,11 +40,11 @@
             <h3 class="font-quicksand tracking-[0.03rem] leading-[1.2] my-[15px] text-[14px] font-bold text-[#3d4750]">RTL Modes</h3>
             <div class="bb-tools-rtl flex flex-wrap flex-row justify-between">
                 <div class="bb-tools-item ltr relative w-[125px] mb-[10px] text-center active-rtl" data-bb-mode-tool="ltr">
-                    <img src="assets/img/tools/ltr.png" alt="ltr" class="w-full p-[5px] rounded-[10px] border-[1px] border-solid border-[#eee] hover:border-[#6c7fd8]">
+                    <img src="/assets/img/tools/ltr.png" alt="ltr" class="w-full p-[5px] rounded-[10px] border-[1px] border-solid border-[#eee] hover:border-[#6c7fd8]">
                     <p class="m-[0] font-Poppins text-[14px] font-semibold capitalize leading-[28px] tracking-[0.03rem] text-[#686e7d]">LTR</p>
                 </div>
                 <div class="bb-tools-item rtl relative w-[125px] mb-[10px] text-center" data-bb-mode-tool="rtl">
-                    <img src="assets/img/tools/rtl.png" alt="rtl" class="w-full p-[5px] rounded-[10px] border-[1px] border-solid border-[#eee] hover:border-[#6c7fd8]">
+                    <img src="/assets/img/tools/rtl.png" alt="rtl" class="w-full p-[5px] rounded-[10px] border-[1px] border-solid border-[#eee] hover:border-[#6c7fd8]">
                     <p class="m-[0] font-Poppins text-[14px] font-semibold capitalize leading-[28px] tracking-[0.03rem] text-[#686e7d]">RTL</p>
                 </div>
             </div>
@@ -53,11 +53,11 @@
             <h3 class="font-quicksand tracking-[0.03rem] leading-[1.2] my-[15px] text-[14px] font-bold text-[#3d4750]">Box Design</h3>
             <div class="bb-tools-box flex flex-wrap flex-row justify-between">
                 <div class="bb-tools-item default relative w-[125px] mb-[10px] text-center active-box" data-bb-mode-tool="default">
-                    <img src="assets/img/tools/box-0.png" alt="box-0" class="w-full p-[5px] rounded-[10px] border-[1px] border-solid border-[#eee] hover:border-[#6c7fd8]">
+                    <img src="/assets/img/tools/box-0.png" alt="box-0" class="w-full p-[5px] rounded-[10px] border-[1px] border-solid border-[#eee] hover:border-[#6c7fd8]">
                     <p class="m-[0] font-Poppins text-[14px] font-semibold capitalize leading-[28px] tracking-[0.03rem] text-[#686e7d]">Default</p>
                 </div>
                 <div class="bb-tools-item box-1 relative w-[125px] mb-[10px] text-center" data-bb-mode-tool="box-1">
-                    <img src="assets/img/tools/box-1.png" alt="box-1" class="w-full p-[5px] rounded-[10px] border-[1px] border-solid border-[#eee] hover:border-[#6c7fd8]">
+                    <img src="/assets/img/tools/box-1.png" alt="box-1" class="w-full p-[5px] rounded-[10px] border-[1px] border-solid border-[#eee] hover:border-[#6c7fd8]">
                     <p class="m-[0] font-Poppins text-[14px] font-semibold capitalize leading-[28px] tracking-[0.03rem] text-[#686e7d]">Box-1</p>
                 </div>
             </div>
