@@ -68,7 +68,7 @@ class ProductsController extends Controller
         $allCategoryIds = array_merge($selectedCategories, getChildCategoryIds($selectedCategories));
 
         $products = Product::query()
-            ->when(!empty($categoryIds), function ($query) use ($allCategoryIds) {
+            ->when(!empty($allCategoryIds), function ($query) use ($allCategoryIds) {
                 return $query->whereIn('category_id', $allCategoryIds);
             })
             ->when($weights, function ($query) use ($weights) {

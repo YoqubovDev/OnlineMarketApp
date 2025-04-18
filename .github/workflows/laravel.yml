@@ -1,10 +1,16 @@
+
 name: Laravel
+
 on:
   push:
     branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
+
   deploy:
+
     name: Deploy to AWS (EC2)
     runs-on: ubuntu-latest
     steps:
@@ -15,7 +21,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           script: |
-            cd /var/www/OnlineMarketApp
+            cd /var/www/OnlineMarketGroupsLeader
             sudo docker compose down
             sudo git reset --hard
             sudo git pull
@@ -23,5 +29,4 @@ jobs:
             sleep 2
             sudo docker exec market_app php artisan migrate
             sudo docker exec market_app php artisan optimize
-            sudo docker exec market_app chmod -R 775 /var/www
             echo "Deploy Completed!"

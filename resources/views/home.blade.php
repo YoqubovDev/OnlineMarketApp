@@ -177,7 +177,7 @@
                                             <span class="flags transition-all duration-[0.3s] ease-in-out absolute z-[5] top-[10px] left-[6px]">
                                                 <span class="text-[14px] text-[#777] font-medium uppercase">New</span>
                                             </span>
-                                            <a href="{{ route('show', $product->id) }}" aria-label="View {{ $product->name }}">
+                                            <a href="javascript:void(0)" ></a>
                                                 <div class="inner-img relative block overflow-hidden pointer-events-none rounded-t-[20px]">
                                                     <img class="main-img transition-all duration-[0.3s] ease-in-out w-full"
                                                          src="{{ !empty($product->images[0]) ? \Illuminate\Support\Facades\Storage::url($product->images[0]->path) : asset('default-image.jpg') }}"
@@ -222,10 +222,11 @@
                                                 </span>
                                             </div>
                                             <h4 class="bb-pro-title mb-[8px] text-[16px] leading-[18px]">
-                                                <a href="{{ route('product.show', $product->id) }}" class="transition-all duration-[0.3s] ease-in-out font-quicksand w-full block whitespace-nowrap overflow-hidden text-ellipsis text-[15px] leading-[18px] text-[#3d4750] font-semibold tracking-[0.03rem]">
+                                                <a href="#" class="transition-all duration-[0.3s] ease-in-out font-quicksand w-full block whitespace-nowrap overflow-hidden text-ellipsis text-[15px] leading-[18px] text-[#3d4750] font-semibold tracking-[0.03rem]">
                                                     {{ $product->name }}
                                                 </a>
-                                        </div>
+                                            </h4>
+
                                         <div class="bb-price flex flex-wrap justify-between">
                                             <div class="inner-price mx-[-3px]">
                                                 @if (!empty($product->discount_price) && $product->discount_price > 0)
