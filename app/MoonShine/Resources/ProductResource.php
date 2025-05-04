@@ -19,6 +19,7 @@ use MoonShine\Contracts\UI\ComponentContract;
 use MoonShine\UI\Fields\Number;
 use MoonShine\UI\Fields\Text;
 use MoonShine\UI\Fields\Textarea;
+use phpDocumentor\Reflection\DocBlock\Description;
 
 /**
  * @extends ModelResource<Product>
@@ -37,10 +38,7 @@ class ProductResource extends ModelResource
         return [
             ID::make()->sortable(),
             Text::make('Name')->sortable(),
-            Textarea::make('Description')
-                ->customAttributes([
-                'rows'=>7,
-            ]),
+            Text::make('Description'),
             Text::make('Price')->sortable(),
             Text::make('Sale Price','sale_price')->sortable(),
             BelongsTo::make(
@@ -49,7 +47,7 @@ class ProductResource extends ModelResource
                 fn($item)=>"$item->name",
                 CategoryResource::class)->nullable(),
             Number::make('Quantity', 'quantity'),
-        Number::make('Amount','pilgrim'),
+        Number::make('Miqdori','pilgrim'),
             BelongsTo::make('Volume', 'volume', fn($item) => $item->name,
                 VolumeResource::class
             )->nullable(),

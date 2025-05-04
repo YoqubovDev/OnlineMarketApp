@@ -5,6 +5,7 @@ namespace App\Services;
     use App\Models\Banner;
     use App\Models\Category;
     use App\Models\Discount;
+    use App\Models\Newsletter;
     use App\Models\Post;
     use App\Models\Product;
     use App\Models\Team;
@@ -63,6 +64,12 @@ class HomeService
                 ->orderBy('id', 'desc')
                 ->with('categories')
                 ->get(),
+
+            'newsletter' => Newsletter::query()
+                ->whereNull('description')
+                ->orderBy('id', 'desc')
+                ->frist,
+
 
             'products' => Product::query()
                 ->orderBy('id', 'desc')

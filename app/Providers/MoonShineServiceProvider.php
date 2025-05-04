@@ -20,6 +20,7 @@ use App\MoonShine\Resources\ImageResource;
 use App\MoonShine\Resources\TeamsResource;
 use App\MoonShine\Resources\BannerResource;
 use App\MoonShine\Resources\DiscountResource;
+use App\MoonShine\Resources\NewsletterResource;
 
 class MoonShineServiceProvider extends ServiceProvider
 {
@@ -45,6 +46,7 @@ class MoonShineServiceProvider extends ServiceProvider
                 BannerResource::class,
                 TeamsResource::class,
                 DiscountResource::class,
+                NewsletterResource::class,
             ])
             ->pages([
                 ...$config->getPages(),

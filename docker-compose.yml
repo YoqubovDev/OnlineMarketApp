@@ -29,21 +29,20 @@ services:
         container_name: market_db
         restart: unless-stopped
         environment:
-            MYSQL_DATABASE: ${DB_DATABASE}
-            MYSQL_PASSWORD: ${DB_PASSWORD}
-            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_DATABASE: onlinemarket
+            MYSQL_ROOT_PASSWORD: 1234
         volumes:
             - market_database:/var/lib/mysql
         networks:
             - market_network
         ports:
-            -   "3207:3206"
+            - "3306:3306"
     market_redis:
         container_name: market_redis
         image: redis:alpine
         restart: unless-stopped
         ports:
-            - "6388:6380"
+            - "6379:6379"
         networks:
             - market_network
     node:

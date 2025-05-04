@@ -35,7 +35,7 @@ class Category extends Model
 
     public function images()
     {
-        return $this->morphMany(Image::class, 'imageable', 'imageable_type', 'imageable_id');
+        return $this->morphOne(Image::class, 'imageable');
     }
 
     public function productCount()

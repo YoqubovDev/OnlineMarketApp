@@ -11,7 +11,6 @@ class Product extends Model
         return $this->belongsToMany(Discount::class, 'discount_product');
     }
 
-
     protected $fillable =
         [
             'product_id',
@@ -34,10 +33,6 @@ class Product extends Model
     public function volume()
     {
         return $this->belongsTo(Volume::class, 'volume_id', 'id');
-    }
-    public function pilgrim_count()
-    {
-        return $this->belongsTo(Pilgrim::class, 'pilgrim_id', 'id');
     }
 
     public function images()
