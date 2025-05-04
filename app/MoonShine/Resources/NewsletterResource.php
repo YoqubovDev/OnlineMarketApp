@@ -7,6 +7,7 @@ namespace App\MoonShine\Resources;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Newsletter;
 
+use MoonShine\Laravel\Fields\Relationships\BelongsToMany;
 use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\TinyMce\Fields\TinyMce;
 use MoonShine\UI\Components\Layout\Box;
@@ -23,7 +24,7 @@ class NewsletterResource extends ModelResource
 {
     protected string $model = Newsletter::class;
 
-    protected string $title = 'Newsletters';
+    protected string $title = 'NewsLetters';
 
     /**
      * @return list<FieldContract>
@@ -32,8 +33,10 @@ class NewsletterResource extends ModelResource
     {
         return [
             ID::make()->sortable(),
-            TinyMce::make('Description'),
-            Text::make('Phone')->nullable(),
+            Text::make('Description')
+            ->customAttributes([
+                        'rows'=>7,
+                    ]),
             Image::make('image'),
         ];
     }
@@ -46,8 +49,10 @@ class NewsletterResource extends ModelResource
         return [
             Box::make([
                 ID::make(),
-                TinyMce::make('Description'),
-                Text::make('Phone')->nullable(),
+                Text::make('Description')
+                ->customAttributes([
+                        'rows'=>7,
+                    ]),
                 Image::make('image'),
             ])
         ];
@@ -60,8 +65,10 @@ class NewsletterResource extends ModelResource
     {
         return [
             ID::make(),
-            TinyMce::make('Description'),
-            Text::make('Phone')->nullable(),
+            Text::make('Description')
+            ->customAttributes([
+                        'rows'=>7,
+                    ]),
             Image::make('image'),
         ];
     }

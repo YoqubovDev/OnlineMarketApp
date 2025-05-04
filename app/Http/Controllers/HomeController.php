@@ -21,46 +21,46 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = (new HomeService)->getHomeData(); // Static chaqirish
+        $data = (new HomeService)->getHomeData();
         return view('home', $data);
     }
     public function show(string $id)
     {
-        $data = (new HomeService)->getHomeData(); // Static chaqirish
+        $data = (new HomeService)->getHomeData();
         return view('product-filter', $data);
     }
 
     public function about()
     {
-        $data = (new HomeService)->getHomeData(); // Static chaqirish
+        $data = (new HomeService)->getHomeData();
         return view('pages.about', $data);
     }
     public function contact(){
-        $data = (new HomeService)->getHomeData(); // Static chaqirish
+        $data = (new HomeService)->getHomeData();
         return view('pages.contact', $data);
     }
     public function cart(){
-        $data = (new HomeService)->getHomeData(); // Static chaqirish
+        $data = (new HomeService)->getHomeData();
         return view('pages.cart', $data);
     }
     public function checkout(){
-        $data = (new HomeService)->getHomeData(); // Static chaqirish
+        $data = (new HomeService)->getHomeData();
         return view('pages.checkout', $data);
     }
     public function compare(){
-        $data = (new HomeService)->getHomeData(); // Static chaqirish
+        $data = (new HomeService)->getHomeData();
         return view('pages.compare', $data);
     }
     public function faq(){
-        $data = (new HomeService)->getHomeData(); // Static chaqirish
+        $data = (new HomeService)->getHomeData();
         return view('pages.faq', $data);
     }
     public function offers(){
-        $data = (new HomeService)->getHomeData(); // Static chaqirish
+        $data = (new HomeService)->getHomeData();
         return view('pages.offers', $data);
     }
     public function terms(){
-        $data = (new HomeService)->getHomeData(); // Static chaqirish
+        $data = (new HomeService)->getHomeData();
         return view('pages.terms', $data);
     }
 }

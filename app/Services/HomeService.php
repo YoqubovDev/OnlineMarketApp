@@ -66,9 +66,9 @@ class HomeService
                 ->get(),
 
             'newsletter' => Newsletter::query()
-                ->whereNull('description')
                 ->orderBy('id', 'desc')
-                ->frist,
+                ->first(),
+
 
 
             'products' => Product::query()

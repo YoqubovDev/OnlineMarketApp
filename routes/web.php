@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DiscountProductController;
 use App\Http\Controllers\HomeController;
 
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ProductsController;
 
 use App\Http\Controllers\ProfileController;
@@ -35,8 +36,10 @@ Route::middleware(GenerateCustomerToken::class)->group(function () {
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
-    // web.php
+
     Route::middleware('auth')->post('/wishlist/toggle', [WishlistController::class, 'toggle'])->name('wishlist.toggle');
+    Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
+
 
 
 
