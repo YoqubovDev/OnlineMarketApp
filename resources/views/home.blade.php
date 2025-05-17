@@ -183,16 +183,18 @@
                                                          src="{{ !empty($product->images[0]) ? \Illuminate\Support\Facades\Storage::url($product->images[0]->path) : asset('default-image.jpg') }}"
                                                          alt="{{ $product->name }}" loading="lazy">
                                                     <img class="hover-img transition-all duration-[0.3s] ease-in-out absolute z-[2] top-[0] left-[0] opacity-[0] w-full"
-                                                         src="{{ !empty($product->images[1]) ? \Illuminate\Support\Facades\Storage::url($product->images[1]->path) : asset('default-image.jpg') }}"
+                                                         src="{{ !empty($product->images[0]) ? \Illuminate\Support\Facades\Storage::url($product->images[0]->path) : asset('default-image.jpg') }}"
                                                          alt="{{ $product->name }} Hover" loading="lazy">
                                                 </div>
                                             </a>
                                             <ul class="bb-pro-actions transition-all duration-[0.3s] ease-in-out my-[0] mx-[auto] absolute z-[9] left-[0] right-[0] bottom-[0] flex flex-row items-center justify-center opacity-[0]">
+                                                @csrf
                                                 <li class="bb-btn-group transition-all duration-[0.3s] ease-in-out w-[35px] h-[35px] mx-[2px] flex items-center justify-center bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[10px]">
                                                     <a href="javascript:void(0)" title="Wishlist" class="like-btn w-[35px] h-[35px] flex items-center justify-center" data-product-id="{{ $product->id }}" aria-label="Add {{ $product->name }} to wishlist">
-                                                        <i class="ri-heart-line text-[18px] leading-[10px]"></i>
+                                                        <i class="{{ \App\Models\Wishlist::where('user_id', auth()->id())->where('product_id', $product->id)->exists() ? 'ri-heart-fill text-red-500' : 'ri-heart-line' }} text-[18px] leading-[10px]"></i>
                                                     </a>
                                                 </li>
+
                                                 <li class="bb-btn-group transition-all duration-[0.3s] ease-in-out w-[35px] h-[35px] mx-[2px] flex items-center justify-center bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[10px]">
                                                     <a href="javascript:void(0)" title="Quick View" class="bb-modal-toggle w-[35px] h-[35px] flex items-center justify-center" data-product-id="{{ $product->id }}" aria-label="Quick view of {{ $product->name }}">
                                                         <i class="ri-eye-line transition-all duration-[0.3s] ease-in-out text-[18px] text-[#777] leading-[10px]"></i>
@@ -704,126 +706,78 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function(){
-        // Wishlist va cart holatini yuklash
-        $('.bb-deal-card').each(function() {
-            var productId = $(this).data('product-id');
+    $(document).ready(function () {
+        const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
+        // ✅ 1. Wishlist va Cart holatini yuklash
+        $('.bb-deal-card').each(function () {
+            const productId = $(this).data('product-id');
             if (localStorage.getItem('wishlist_' + productId) === 'true') {
                 $(this).find('.ri-heart-line').closest('.bb-btn-group').addClass('heart-active');
             }
-
             if (localStorage.getItem('cart_' + productId) === 'true') {
                 $(this).find('.ri-shopping-bag-4-line').closest('.bb-btn-group').addClass('cart-active');
             }
         });
 
-        // Wishlist tugmasi
-        $('.bb-pro-actions').on('click', '.ri-heart-line', function(e){
-            e.preventDefault();
-            var $icon = $(this);
-            var productId = $icon.closest('.bb-deal-card').data('product-id');
+        // ✅ 2. AJAX Request funksiyasi
+        function toggleItem(type, productId, iconElement) {
+            const url = type === 'wishlist' ? '/wishlist/toggle' : '/cart/toggle';
+            const storageKey = `${type}_${productId}`;
+            const classActive = type === 'wishlist' ? 'heart-active' : 'cart-active';
 
             $.ajax({
-                url: '/wishlist/toggle',
+                url: url,
                 type: 'POST',
                 data: {
                     product_id: productId,
-                    _token: '{{ csrf_token() }}'
+                    _token: csrfToken
                 },
-                success: function(response) {
-                    if(response.status.like){
-                        $icon.closest('.bb-btn-group').addClass('heart-active');
-                        localStorage.setItem('wishlist_' + productId, 'true'); // Saqlash
+                success: function (response) {
+                    if (response.status === 'added') {
+                        iconElement.closest('.bb-btn-group').addClass('heart-active');
+                        localStorage.setItem(storageKey, 'true');
                     } else {
-                        $icon.closest('.bb-btn-group').removeClass('heart-active');
-                        localStorage.removeItem('wishlist_' + productId); // O'chirish
+                        iconElement.closest('.bb-btn-group').removeClass('heart-active');
+                        localStorage.removeItem(storageKey);
                     }
                 },
-                error: function(xhr) {
-                    console.error("Wishlist xatosi:", xhr);
+                error: function (xhr) {
+                    console.error(`${type} xatosi:`, xhr);
                 }
             });
-        });
+        }
 
-        // Cart tugmasi
-        $('.bb-pro-actions').on('click', '.ri-shopping-bag-4-line', function(e){
+        // ✅ 3. Wishlist tugmasi event
+        $('.bb-pro-actions').on('click', '.ri-heart-line, .ri-heart-fill', function (e) {
             e.preventDefault();
-            var $icon = $(this);
-            var productId = $icon.closest('.bb-deal-card').data('product-id');
-
-            $.ajax({
-                url: '/cart/toggle',
-                type: 'POST',
-                data: {
-                    product_id: productId,
-                    _token: '{{ csrf_token() }}'
-                },
-                success: function(response) {
-                    if(response.status.shopping){
-                        $icon.closest('.bb-btn-group').addClass('cart-active');
-                        localStorage.setItem('cart_' + productId, 'true'); // Saqlash
-                    } else {
-                        $icon.closest('.bb-btn-group').removeClass('cart-active');
-                        localStorage.removeItem('cart_' + productId); // O'chirish
-                    }
-                },
-                error: function(xhr) {
-                    console.error("Cart xatosi:", xhr);
-                }
-            });
+            const iconElement = $(this);
+            // Find the closest parent with the data-product-id attribute
+            const productId = iconElement.closest('[data-product-id]').data('product-id');
+            toggleItem('wishlist', productId, iconElement);
         });
-    });
-</script>
 
-<script>
-    document.querySelectorAll('.like-btn').forEach(btn => {
-        btn.addEventListener('click', function () {
-            const productId = this.dataset.productId;
-            console.log("Product ID:", productId);
-
-            fetch('/wishlist/toggle', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                },
-                body: JSON.stringify({ product_id: productId }),
-                credentials: 'same-origin' // 👈 Bu MUHIM: cookie yuboriladi
-            })
-                .then(res => {
-                    if (!res.ok) {
-                        throw new Error("Serverdan noto‘g‘ri javob: " + res.status);
-                    }
-                    return res.json();
-                })
-                .then(data => {
-                    if (data.status === 'added') {
-                        this.querySelector('i').classList.remove('ri-heart-line');
-                        this.querySelector('i').classList.add('ri-heart-fill', 'text-[#6c7fd8]');
-                    } else {
-                        this.querySelector('i').classList.remove('ri-heart-fill', 'text-[#6c7fd8]');
-                        this.querySelector('i').classList.add('ri-heart-line');
-                    }
-                })
-                .catch(error => {
-                    console.error('Xato yuz berdi:', error);
-                });
+// ✅ 4. Cart tugmasi event
+        $('.bb-pro-actions').on('click', '.ri-shopping-bag-4-line, .ri-shopping-bag-4-fill', function (e) {
+            e.preventDefault();
+            const iconElement = $(this);
+            // Find the closest parent with the data-product-id attribute
+            const productId = iconElement.closest('[data-product-id]').data('product-id');
+            toggleItem('cart', productId, iconElement);
         });
-    });
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const endDate = new Date('2025-04-17T00:00:00'); // Set your deal end date
+        // ✅ 5. Timer funksiyasi (Deal countdown)
+        const endDate = new Date('2025-04-17T00:00:00');
         const timer = document.getElementById('dealend');
 
         function updateTimer() {
             const now = new Date();
             const diff = endDate - now;
+
             if (diff <= 0) {
                 timer.innerHTML = 'Deal Ended!';
                 return;
             }
+
             const hours = Math.floor(diff / (1000 * 60 * 60));
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
@@ -834,6 +788,7 @@
         setInterval(updateTimer, 1000);
     });
 </script>
+
 
 
 

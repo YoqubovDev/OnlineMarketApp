@@ -4,38 +4,52 @@ namespace App\Http\Controllers;
 
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WishlistController extends Controller
 {
     public function toggle(Request $request)
     {
-        // CSRF tokenni tekshirib chiqing (optional)
-        if (!$request->has('X-CSRF-TOKEN') || !$request->header('X-CSRF-TOKEN')) {
-            return response()->json(['error' => 'CSRF token is missing'], 403);
-        }
-
-        // Input ma'lumotlarini validatsiya qilish
         $request->validate([
             'product_id' => 'required|exists:products,id',
         ]);
 
-        // Foydalanuvchi wishlistiga mahsulot qo'shish yoki o'chirish
-        $wishlist = Wishlist::where('user_id', auth()->id())
-            ->where('product_id', $request->product_id)
-            ->first();
+        $userId = Auth::id();
+        $sessionId = $request->session()->getId();
+
+        $query = Wishlist::where('product_id', $request->product_id);
+        if ($userId) {
+            $query->where('user_id', $userId);
+        } else {
+            $query->where('session_id', $sessionId);
+        }
+
+        $wishlist = $query->first();
 
         if ($wishlist) {
-            // Mahsulotni o'chirish
             $wishlist->delete();
             return response()->json(['status' => 'removed']);
         } else {
-            // Yangi mahsulot qo'shish
             Wishlist::create([
-                'user_id' => auth()->id(),
+                'user_id'    => $userId,
+                'session_id' => $userId ? null : $sessionId,
                 'product_id' => $request->product_id,
             ]);
             return response()->json(['status' => 'added']);
         }
+    }
+
+    /**
+     * Optional: Call this after login to merge guest wishlist to user
+     */
+    public function mergeGuestWishlistToUser(Request $request)
+    {
+        if (!Auth::check()) return;
+
+        $sessionId = $request->session()->getId();
+        $userId = Auth::id();
+        Wishlist::where('session_id', $sessionId)
+            ->update(['user_id' => $userId, 'session_id' => null]);
     }
 
 

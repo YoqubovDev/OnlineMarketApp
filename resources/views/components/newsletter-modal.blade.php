@@ -13,7 +13,7 @@
                 <form action="{{ route('newsletter.subscribe') }}" method="POST">
                     @csrf
                     <input type="hidden" name="newsletter_id" value="{{ $newsletter->id }}">
-                    
+
                     <input type="text" name="phone" placeholder="Phone Number" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
 
                     <button type="submit" class="mt-3 p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Subscribe</button>

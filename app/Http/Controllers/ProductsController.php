@@ -64,7 +64,6 @@ class ProductsController extends Controller
             return [];
         }
 
-        // Merge selected categories with their children
         $allCategoryIds = array_merge($selectedCategories, getChildCategoryIds($selectedCategories));
 
         $products = Product::query()
@@ -97,11 +96,6 @@ class ProductsController extends Controller
         $minSalePrice = $products->min('price');
         $maxSalePrice = $products->max('price');
 
-//        $newArrivalProducts = Product::whereHas('category', function ($query) use ($parentCategories) {
-//            $query->whereHas('parent', function ($q) use ($parentCategories) {
-//                $q->whereNotNull('id')->where('name', $parentCategories->name);
-//            });
-//        })->orderBy('id', 'desc')->limit(4)->get();
 
 
         return view('product-filter', [
@@ -111,7 +105,6 @@ class ProductsController extends Controller
             'categories' => $categories,
             'images'=>$images,
             'weights' => $weights,
-//            'newArrivalProducts' => $newArrivalProducts,
             'minSalePrice' => $minSalePrice,
             'maxSalePrice' => $maxSalePrice,
         ]);
@@ -163,23 +156,8 @@ class ProductsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $products)
-    {
-        //
-    }
 
-    public function likeProduct($productId)
-    {
-        if (Auth::check()) {
-            $user = Auth::user();
-            $user->likedProducts()->attach($productId);
-        } else {
-            $likedProducts = Session::get('liked_products', []);
-            if (!in_array($productId, $likedProducts)) {
-                $likedProducts[] = $productId;
-                Session::put('liked_products', $likedProducts);
-            }
-        }
-        return response()->json(['success' => true]); // JavaScript uchun javob
-    }
+
+
+
 }
