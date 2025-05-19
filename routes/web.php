@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DiscountProductController;
 use App\Http\Controllers\HomeController;
 
@@ -39,6 +40,7 @@ Route::middleware(GenerateCustomerToken::class)->group(function () {
 
 
     Route::post('/wishlist/toggle', [WishlistController::class, 'toggle'])->name('wishlist.toggle');
+    Route::post('/cart/toggle', [CartController::class, 'add'])->name('cart.add');
     Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 
 
