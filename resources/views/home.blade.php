@@ -206,10 +206,19 @@
                                                     </a>
                                                 </li>
                                                 <li class="bb-btn-group transition-all duration-[0.3s] ease-in-out w-[35px] h-[35px] mx-[2px] flex items-center justify-center bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[10px]">
-                                                    <a href="javascript:void(0)" title="Add To Cart" class="add-to-cart w-[35px] h-[35px] flex items-center justify-center" data-product-id="{{ $product->id }}" aria-label="Add {{ $product->name }} to cart">
+                                                    <a href="javascript:void(0)"
+                                                       title="Add To Cart"
+                                                       class="add-to-cart w-[35px] h-[35px] flex items-center justify-center"
+                                                       data-product-id="{{ $product->id }}"
+                                                       aria-label="Add {{ $product->name }} to cart">
                                                         <i class="ri-shopping-bag-4-line transition-all duration-[0.3s] ease-in-out text-[18px] text-[#777] leading-[10px]"></i>
                                                     </a>
                                                 </li>
+{{--                                                <li class="bb-btn-group transition-all duration-[0.3s] ease-in-out w-[35px] h-[35px] mx-[2px] flex items-center justify-center bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[10px]">--}}
+{{--                                                    <a href="javascript:void(0)" title="Add To Cart" class="add-to-cart w-[35px] h-[35px] flex items-center justify-center" data-product-id="{{ $product->id }}" aria-label="Add {{ $product->name }} to cart">--}}
+{{--                                                        <i class="ri-shopping-bag-4-line transition-all duration-[0.3s] ease-in-out text-[18px] text-[#777] leading-[10px]"></i>--}}
+{{--                                                    </a>--}}
+{{--                                                </li>--}}
                                             </ul>
                                         </div>
                                         <div class="bb-pro-contact p-[20px]">
@@ -709,7 +718,6 @@
     $(document).ready(function () {
         const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-        // ✅ 1. Wishlist va Cart holatini yuklash
         $('.bb-deal-card').each(function () {
             const productId = $(this).data('product-id');
             if (localStorage.getItem('wishlist_' + productId) === 'true') {
@@ -720,7 +728,6 @@
             }
         });
 
-        // ✅ 2. AJAX Request funksiyasi
         function toggleItem(type, productId, iconElement) {
             const url = type === 'wishlist' ? '/wishlist/toggle' : '/cart/toggle';
             const storageKey = `${type}_${productId}`;
@@ -748,11 +755,10 @@
             });
         }
 
-        // ✅ 3. Wishlist tugmasi event
+
         $('.bb-pro-actions').on('click', '.ri-heart-line, .ri-heart-fill', function (e) {
             e.preventDefault();
             const iconElement = $(this);
-            // Find the closest parent with the data-product-id attribute
             const productId = iconElement.closest('[data-product-id]').data('product-id');
             toggleItem('wishlist', productId, iconElement);
         });
