@@ -25,3 +25,5 @@ composer.lock
 yarn.lock
 package-lock.json
 
+sudo systemctl stop mysql
+
