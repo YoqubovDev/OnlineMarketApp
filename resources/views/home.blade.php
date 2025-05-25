@@ -214,11 +214,6 @@
                                                         <i class="ri-shopping-bag-4-line transition-all duration-[0.3s] ease-in-out text-[18px] text-[#777] leading-[10px]"></i>
                                                     </a>
                                                 </li>
-{{--                                                <li class="bb-btn-group transition-all duration-[0.3s] ease-in-out w-[35px] h-[35px] mx-[2px] flex items-center justify-center bg-[#fff] border-[1px] border-solid border-[#eee] rounded-[10px]">--}}
-{{--                                                    <a href="javascript:void(0)" title="Add To Cart" class="add-to-cart w-[35px] h-[35px] flex items-center justify-center" data-product-id="{{ $product->id }}" aria-label="Add {{ $product->name }} to cart">--}}
-{{--                                                        <i class="ri-shopping-bag-4-line transition-all duration-[0.3s] ease-in-out text-[18px] text-[#777] leading-[10px]"></i>--}}
-{{--                                                    </a>--}}
-{{--                                                </li>--}}
                                             </ul>
                                         </div>
                                         <div class="bb-pro-contact p-[20px]">
@@ -802,7 +797,7 @@
 <!-- Footer -->
 <x-footer></x-footer>
 <!-- Cart sidebar -->
-<x-cart-sidebar></x-cart-sidebar>
+<x-cart-sidebar :cart_items="$cart_items" :category_cart="$category_cart" ></x-cart-sidebar>
 <!-- Category Popup -->
 <x-category-popup :categories="$categories" :products="$products"></x-category-popup>
 <!-- Quick view Modal -->
