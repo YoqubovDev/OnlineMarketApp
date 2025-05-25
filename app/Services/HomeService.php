@@ -2,18 +2,36 @@
 
 namespace App\Services;
 
-    use App\Models\Banner;
-    use App\Models\Category;
-    use App\Models\Discount;
-    use App\Models\Newsletter;
-    use App\Models\Post;
-    use App\Models\Product;
-    use App\Models\Team;
+use App\Models\Banner;
+use App\Models\CartItem;
+use App\Models\Category;
+use App\Models\Discount;
+use App\Models\Newsletter;
+use App\Models\Post;
+use App\Models\Product;
+use App\Models\Team;
 
 class HomeService
 {
     public function getHomeData()
     {
+        $parentCategories = Category::query()
+            ->whereNull('parent_id')
+            ->orderBy('id', 'desc')
+            ->limit(4)
+            ->with('categories')
+            ->get();
+
+        $cartItems = CartItem::query()
+            ->with('product')
+            ->orderBy('id', 'desc')
+            ->get();
+
+        $cartProductIds = $cartItems->pluck('product_id');
+        $cartProducts = Product::whereIn('id', $cartProductIds)->get();
+
+        $discount = Discount::query()->orderBy('id', 'desc')->first();
+
         return [
             'topBanners' => Banner::query()
                 ->where('position', 'top')
@@ -40,6 +58,11 @@ class HomeService
                 ->with(['images', 'parent'])
                 ->get(),
 
+            'category_cart' => Category::query()
+                ->orderBy('id', 'desc')
+                ->with(['images', 'parent'])
+                ->first(),
+
             'latestPosts' => Post::query()
                 ->orderBy('id', 'desc')
                 ->with('postCategory')
@@ -52,63 +75,35 @@ class HomeService
                 ->limit(10)
                 ->get(),
 
-            'parentCategories' => Category::query()
-                ->whereNull('parent_id')
-                ->orderBy('id', 'desc')
-                ->limit(4)
-                ->with('categories')
-                ->get(),
+            'parentCategories' => $parentCategories,
 
-            'productsMenu' => Category::query()
-                ->whereNull('parent_id')
-                ->orderBy('id', 'desc')
-                ->with('categories')
-                ->get(),
+            'productsMenu' => $parentCategories,
 
             'newsletter' => Newsletter::query()
                 ->orderBy('id', 'desc')
                 ->first(),
-
-
 
             'products' => Product::query()
                 ->orderBy('id', 'desc')
                 ->limit(10)
                 ->get(),
 
-
-            $parentCategories = Category::query()
-                ->whereNull('parent_id')
-                ->orderBy('id', 'desc')
-                ->limit(10)
-                ->with('categories')
-                ->get(),
-
             'newArrivalProducts' => Product::whereHas('category', function ($query) use ($parentCategories) {
                 $query->whereIn('id', $parentCategories->pluck('id'));
-                })->orderBy('id', 'desc')->limit(4)->get(),
+            })->orderBy('id', 'desc')->limit(4)->get(),
 
-            'discount_price' => Discount::query()->value('discount_price'),
+            'discount_price' => $discount?->discount_price,
+            'discount_name' => $discount?->name,
+            'discount_start_date' => $discount?->start_date,
+            'discount_end_date' => $discount?->end_date,
 
-            'discount_name' => Discount::query()->value('name'),
+            'cart_items' => $cartItems,
+            'cart_products' => $cartProducts,
 
-            'discount_start_date' => Discount::query()->value('start_date'),
-            'discount_end_date' => Discount::query()->value('end_date'),
-
-
-        'groupTeam' => Team::query()
+            'groupTeam' => Team::query()
                 ->orderBy('id', 'desc')
                 ->limit(10)
                 ->get(),
-
-
-
-
-
         ];
-
-
     }
-
-
 }
