@@ -46,6 +46,7 @@ Route::middleware(GenerateCustomerToken::class)->group(function () {
 
 
 
+    Route::get('/cart', [CartController::class, 'index'])->name('cart');
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->middleware(['auth', 'verified'])->name('dashboard');
